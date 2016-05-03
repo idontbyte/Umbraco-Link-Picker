@@ -34,6 +34,30 @@
 					<option value="_parent">Opens the linked document in the parent frame</option>
 				</select>
 			</umb-control-group>
+			
+		    <umb-control-group label="Google Tag Manager - Category">
+				<input type="text"
+					localize="placeholder" 
+					placeholder="Enter a GTM category..." 
+					class="umb-editor umb-textstring" 
+					ng-model="target.gtmCategory" />
+			</umb-control-group>
+			
+		    <umb-control-group label="Google Tag Manager - Action">
+				<input type="text"
+					localize="placeholder" 
+					placeholder="Enter a GTM action..." 
+					class="umb-editor umb-textstring" 
+					ng-model="target.gtmAction" />
+			</umb-control-group>
+			
+		    <umb-control-group label="Google Tag Manager - Label">
+				<input type="text"
+					localize="placeholder" 
+					placeholder="Enter a GTM label..." 
+					class="umb-editor umb-textstring" 
+					ng-model="target.gtmLabel" />
+			</umb-control-group>
 		</umb-pane>
 
         <umb-tree-search-box hide-search-callback="hideSearch"

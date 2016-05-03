@@ -17,7 +17,10 @@
 	                name: e.name || '',
 	                url: e.url,
 	                target: e.target || '_self',
-	                hashtarget: e.hashtarget || ''
+	                hashtarget: e.hashtarget || '',
+					gtmCategory: e.gtmCategory || '',
+					gtmAction: e.gtmAction || '',
+					gtmLabel: e.gtmLabel || ''
 	            };
 	            // close dialog
 	            uDialogService.close();
@@ -39,7 +42,10 @@
 	                name: e.name || '',
 	                url: e.url,
 	                target: e.target || '_self',
-	                hashtarget: e.hashtarget || ''
+	                hashtarget: e.hashtarget || '',
+					gtmCategory: e.gtmCategory || '',
+					gtmAction: e.gtmAction || '',
+					gtmLabel: e.gtmLabel || ''
 	            };
 	            // close dialog
 	            uDialogService.close();
