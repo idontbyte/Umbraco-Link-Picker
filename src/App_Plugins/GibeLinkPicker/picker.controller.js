@@ -1,4 +1,4 @@
-﻿angular.module("umbraco").controller("Gibe.LinkPickerController", function ($scope, assetsService) {
+﻿angular.module("umbraco").controller("Gibe.LinkPickerController", function ($scope, assetsService, gtmCategoryResource) {
 
 	var ngi = angular.element('body').injector();
 	var uDialogService = ngi.get('dialogService');
@@ -22,6 +22,9 @@
 					gtmAction: e.gtmAction || '',
 					gtmLabel: e.gtmLabel || ''
 	            };
+				// save category
+				gtmCategoryResource.saveCategory(e.gtmCategory);
+				
 	            // close dialog
 	            uDialogService.close();
 	        }
@@ -47,6 +50,10 @@
 					gtmAction: e.gtmAction || '',
 					gtmLabel: e.gtmLabel || ''
 	            };
+				// save category
+				gtmCategoryResource.saveCategory(e.gtmCategory);
+				
+				
 	            // close dialog
 	            uDialogService.close();
 	        }

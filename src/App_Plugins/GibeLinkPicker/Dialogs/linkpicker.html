@@ -36,12 +36,37 @@
 			</umb-control-group>
 			
 		    <umb-control-group label="Google Tag Manager - Category">
-				<input type="text"
-					localize="placeholder" 
-					placeholder="Enter a GTM category..." 
-					class="umb-editor umb-textstring" 
-					ng-model="target.gtmCategory" />
+			<div id="categorySearchContainer">
+				<input type="text" placeholder="Enter a GTM category..."  class="umb-editor umb-textstring" ng-model="target.gtmCategory" ng-change="updateSearchTerm(target.gtmCategory)" />
+				<div class="autocomplete innerBox" ng-show="autocompleteHide==false">
+					<ul>
+						<li ng-repeat="autoText in gtmCategories | filter:target.gtmCategory" ng-click="selectAutoText(autoText.Name)">{{autoText.Name}} <a href="" class="delete-category-button color-red icon-delete" ng-click="removeCategory(autoText.Name)"></a></li>
+					</ul>
+				</div>
+			</div>
 			</umb-control-group>
+			<style>
+				.autocomplete ul {
+					margin-left: 0px;
+					width: 98%;
+					margin-top: -11px;
+					border: 1px solid #ccc;
+				}
+
+				.autocomplete ul li{
+					list-style: none;
+					padding: 5px 6px 5px 6px;
+					cursor: pointer;
+				}
+
+				.autocomplete ul li:hover {
+					background-color: #f8f8f8;
+				}
+				
+				.delete-category-button {
+					float: right;
+				}
+			</style>
 			
 		    <umb-control-group label="Google Tag Manager - Action">
 				<input type="text"

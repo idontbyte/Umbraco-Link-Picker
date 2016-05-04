@@ -1,7 +1,39 @@
 //used for the media picker dialog
 angular.module("umbraco").controller("Gibe.Dialogs.LinkPickerController",
-	function ($scope, eventsService, dialogService, entityResource, contentResource, mediaHelper, userService, localizationService) {
+	function ($scope, eventsService, dialogService, entityResource, contentResource, mediaHelper, userService, localizationService, gtmCategoryResource) {
 	    var dialogOptions = $scope.dialogOptions;
+
+		$scope.autocompleteHide = true;
+		
+	    gtmCategoryResource.getAll().then(function (response) {
+	        $scope.gtmCategories = response.data;
+	    });
+		
+		$scope.selectAutoText = function(text) {
+			$scope.target.gtmCategory = text;
+			$scope.searchTermSelected = true;
+			$scope.autocompleteHide = true;
+		}
+		$scope.updateSearchTerm = function (text) {
+			if ($scope.searchTermSelected == false) {
+				if (text != undefined) {
+					if (text.length > 2) {
+						$scope.autocompleteHide = false;
+					} else {
+						$scope.autocompleteHide = true;
+					}
+				}
+			} else {
+				$scope.searchTermSelected = false;
+			}
+		}
+		$scope.removeCategory = function (category) {
+			// remove category
+			gtmCategoryResource.removeCategory(category);
+			var index = $scope.gtmCategories.indexOf(category);
+  			$scope.gtmCategories.splice(index, 1);  
+		}
+		
 
 	    var searchText = "Search...";
 	    localizationService.localize("general_search").then(function (value) {
